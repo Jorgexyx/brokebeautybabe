@@ -31,7 +31,8 @@ async function pageScroll(page){
 let scrapSephoraItems = async() => {
 	 //Load sephora sales page
 	const browser = await puppeteer.launch({
-		headless: true
+		//headless: true,
+    args: ['--no-sandbox', '--disable-setuid-sandbox']
 	});
 	const webPage = await browser.newPage();
 
