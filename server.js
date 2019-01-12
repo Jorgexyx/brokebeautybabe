@@ -1,7 +1,8 @@
 const express = require('express')
 const app = express()
 const port = process.env.PORT || 5000;
-const sephora = require('../sephoraAPI/index.js');
+//const sephora = require('../sephoraAPI/index.js');
+const sephora = require('./sephoraScrapper.js');
 
 //create a get route
 app.get('/express_backend', (req,res) => {
