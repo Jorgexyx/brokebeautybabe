@@ -22,7 +22,7 @@ async function pageScroll(page){
 			}
 			catch(err) {
 				console.log("nope");
-				resolve();
+				//resolve();
 			}
 		});
 	});
