@@ -22,6 +22,12 @@
 	position:relative;
 }
 
+.Header-brand-text{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
 .Header-text{
 	position: absolute;
 	left: 30%;

@@ -5,6 +5,9 @@ import loadingImage from './images/loading.gif';
 import { MdPerson, MdMenu} from "react-icons/md";
 import { FaShoppingBag } from "react-icons/fa";
 import { IoIosHeart } from "react-icons/io";
+import { BrowserView, MobileView } from "react-device-detect";
+
+
 function generateItemBoxNoPrice(props) {
 	var collectionName = props['collectionName'];
 	var productName = props['productName'];
@@ -200,15 +203,17 @@ class App extends Component {
 		return all;
 	};
 
-  render() {
-		if (this.state.isLoading) {
-			return(
-      <div className="App">
+	renderHeader() {
+		return (
         <header className="App-header">
 				<div>
           <div style={{"display":"flex", "justifyContent":"space-between", "paddingLeft":"1em", "paddingRight":"1em", "paddingTop":".7em"}}>
 						<MdMenu width=".7em" height=".7em"/>
- 						<b>BEAUTY BABES</b>						
+
+						<div className="Header-brand-text">
+ 							<b>BEAUTY BABES</b>						
+							<font size="1" color="#202020">Makeup Lovers on a Budget</font>
+						</div>
 
 						<div style={{"display":"flex","justifyContent":"space-between","width":"6%"}}>
 							<FaShoppingBag size=".7em"/>
@@ -218,7 +223,6 @@ class App extends Component {
 						</div>
 
           </div>
-					<font size="1" color="#202020">Makeup Lovers on a Budget</font>
 				</div>
 
 				<div style={{"display":"flex","flexDirection":"row"}}>
@@ -238,6 +242,14 @@ class App extends Component {
 				</div>
 
 				</header>
+		)
+	}
+
+  render() {
+		if (this.state.isLoading) {
+			return(
+      <div className="App">
+        {this.renderHeader()}
 			
 				{/* navbar */}
 				<div className="nav-bar nav-links">
@@ -288,40 +300,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <header className="App-header">
-				<div>
-          <div style={{"display":"flex", "justifyContent":"space-between", "paddingLeft":"1em", "paddingRight":"1em", "paddingTop":".7em"}}>
-						<MdMenu width=".7em" height=".7em"/>
- 						<b>BEAUTY BABES</b>						
-
-						<div style={{"display":"flex","justifyContent":"space-between","width":"6%"}}>
-							<FaShoppingBag size=".7em"/>
-							<br/> 
-							<MdPerson size=".7em"/>
-							<br/> 
-						</div>
-
-          </div>
-					<font size="1" color="#202020">Makeup Lovers on a Budget</font>
-				</div>
-
-				<div style={{"display":"flex","flexDirection":"row"}}>
-
-					<div className="Header-text" >
-
-					<font size="2" color="#A0A0A0">Home / </font><font size="2" color="#585858">{this.state.currentPage.toLowerCase()}</font>
-					<br/>
-					<b><font size="6">{this.state.currentPage}</font></b>
-
-					</div>
-
-					<div>
-						<img src={modelImage} alt="banner One" className="banner"/> 
-					</div>
-
-				</div>
-
-				</header>
+				{this.renderHeader()}
 			
 				{/* navbar */}
 				<div className="nav-bar nav-links">
@@ -363,6 +342,7 @@ class App extends Component {
 
 				{/*<img src={image} alt="banner One" className="banner"/> */}
 
+				<BrowserView>
 				{/* PRODUCT DIVS */}
 				<div className="items-div">
 
@@ -387,9 +367,8 @@ class App extends Component {
 							{this.state.products}
 						</div>
 					</div>
-
 				</div>
-
+				</BrowserView>
      </div>
     );
   }
