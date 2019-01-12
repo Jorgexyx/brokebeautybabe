@@ -7,6 +7,7 @@ async function pageScroll(page){
 		await new Promise( (resolve, reject) => {
 			let scrollSize = 1000;
 			let scrollDiv = (document.getElementsByClassName('css-lsu8bg'))[0];
+			try {
 			let scrollHeight = scrollDiv.scrollHeight;
 
 			let timer = setInterval( () => {
@@ -18,6 +19,10 @@ async function pageScroll(page){
 					resolve();
 				}
 			}, 300);
+			}
+			catch(err) {
+				console.log("nope");
+			}
 		});
 	});
 }
