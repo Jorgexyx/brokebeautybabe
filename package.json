@@ -16,6 +16,7 @@
     "puppeteer": "^1.11.0"
   },
 	"scripts": {
-		"start": "node server.js"
+		"start": "node server.js",
+		"heroku-postbuild": "cd client && npm install && npm run build"
 	}
 }
