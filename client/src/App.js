@@ -4,7 +4,7 @@ import modelImage from './images/model.png';
 import loadingImage from './images/loading.gif';
 import { MdPerson, MdMenu} from "react-icons/md";
 import { FaShoppingBag } from "react-icons/fa";
-import { IoIosHeart } from "react-icons/io";
+//import { IoIosHeart } from "react-icons/io";
 import { BrowserView, MobileView } from "react-device-detect";
 
 
@@ -245,13 +245,9 @@ class App extends Component {
 		)
 	}
 
-  render() {
-		if (this.state.isLoading) {
-			return(
-      <div className="App">
-        {this.renderHeader()}
-			
-				{/* navbar */}
+	/* navbar */
+	renderNavBar() {
+		return (
 				<div className="nav-bar nav-links">
 					<a href="#All Products" className="nav-links" onClick={() =>this.onClick('all')}>
 						All Products	
@@ -288,57 +284,30 @@ class App extends Component {
 					</a>
 						
 				</div>
+		)
+
+	}
+
+  render() {
+
+		if (this.state.isLoading) {
+			return(
+      <div className="App">
+        {this.renderHeader()}
+				{this.renderNavBar()}
+			
 					<div style={{"display":"flex","flexDirection":"column", "alignItems":"center"}}>
-						<img style={{"height":"5em","width":"5em","paddingBottom":"1em"}} src={loadingImage}/>
+						<img style={{"height":"5em","width":"5em","paddingBottom":"1em"}} src={loadingImage} alt="loading webpage"/>
 						<font size="2"> loading content please wait...</font>
 					</div>
 			</div>
 			);
-
-
 		}
 
     return (
       <div className="App">
 				{this.renderHeader()}
-			
-				{/* navbar */}
-				<div className="nav-bar nav-links">
-					<a href="#All Products" className="nav-links" onClick={() =>this.onClick('all')}>
-						All Products	
-					</a>
-						
-					<a href="localhost:3000/#Makeup" className="nav-links">
-						Makeup 
-					</a>
- 
-					<a href="localhost:3000/" className="nav-links">
-						SkinCare
-					</a>
-						
-					<a href="localhost:3000/" className="nav-links">
-						Fragrence
-					</a>
-						
-					<a href="localhost:3000/" className="nav-links">
-						Hair 
-					</a>
-
-					<a href="localhost:3000/" className="nav-links">
-						Brushes & Tools 
-					</a>
-
-					<a href="localhost:3000/" className="nav-links">
-						Beauty Tools 
-					</a>
-					<a href="localhost:3000/" className="nav-links">
-						Men 
-					</a>
-					<a href="localhost:3000/" className="nav-links">
-						Mini Size 
-					</a>
-						
-				</div>
+				{this.renderNavBar()}
 
 				{/*<img src={image} alt="banner One" className="banner"/> */}
 
@@ -358,17 +327,34 @@ class App extends Component {
 					</div>
 
 					<div>
+
 						<div className="product-header">
 							<b style={{'fontSize':'9px'}}> <font color="#880000">{this.state.numProducts}</font> PRODUCTS FOUND </b>
-							
 						</div>
 
 						<div style={{'display': 'flex ','flexDirection':'row', 'flexWrap': 'wrap' , 'fontSize': '9px', 'jusfiyContent':'center'}}>
 							{this.state.products}
 						</div>
+
 					</div>
+
 				</div>
 				</BrowserView>
+
+				<MobileView>
+					<div>
+
+						<div className="product-header">
+							<b style={{'fontSize':'9px'}}> <font color="#880000">{this.state.numProducts}</font> PRODUCTS FOUND </b>
+						</div>
+
+						<div style={{'display':'flex', 'flexDirection':'column', 'alignItems':'center'}}>
+							{this.state.products}
+						</div>
+
+					</div>
+				</MobileView>
+
      </div>
     );
   }
