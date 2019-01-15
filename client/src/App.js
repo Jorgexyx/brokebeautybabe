@@ -226,17 +226,32 @@ class App extends Component {
 				</div>
 
 				<div style={{"display":"flex","flexDirection":"row"}}>
+	
+					<BrowserView>
+						<div className="Header-text" >
+							<font size="2" color="#A0A0A0">Home / </font><font size="2" color="#585858">{this.state.currentPage.toLowerCase()}</font>
+							<br/>
+							<b><font size="6">{this.state.currentPage}</font></b>
+						</div>
+					</BrowserView>
 
-					<div className="Header-text" >
-
-					<font size="2" color="#A0A0A0">Home / </font><font size="2" color="#585858">{this.state.currentPage.toLowerCase()}</font>
-					<br/>
-					<b><font size="6">{this.state.currentPage}</font></b>
-
-					</div>
-
+					<MobileView>
+						<div className="Header-text-mobile">
+							<font size="2" color="#A0A0A0">Home / </font><font size="2" color="#585858">{this.state.currentPage.toLowerCase()}</font>
+							<br/>
+							<b><font size="6">{this.state.currentPage}</font></b>
+						</div>
+					</MobileView>
+					
 					<div>
-						<img src={modelImage} alt="banner One" className="banner"/> 
+						<BrowserView>
+							<img src={modelImage} alt="banner One" className="banner"/> 
+						</BrowserView>
+						
+						<MobileView>
+							<img src={modelImage} alt="banner One" className="banner-mobile"/> 
+						</MobileView>
+						
 					</div>
 
 				</div>

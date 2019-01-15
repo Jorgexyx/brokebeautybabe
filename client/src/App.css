@@ -34,6 +34,14 @@
 	bottom:35%;
 }
 
+.Header-text-mobile{
+	position: absolute;
+	left: 2%;
+	bottom: -3%;
+}
+
+
+
 .App-link {
   color: #61dafb;
 }
@@ -55,6 +63,13 @@
 	position: absolute;
 	height: 75%;
 	right:28%;
+	bottom:0%;
+}
+
+.banner-mobile{
+	position: absolute;
+	height: 75%;
+	right:11%;
 	bottom:0%;
 }
 
