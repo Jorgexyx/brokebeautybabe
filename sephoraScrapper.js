@@ -6,24 +6,27 @@ async function pageScroll(page){
 	await page.evaluate( async() => {
 		await new Promise( (resolve, reject) => {
 			let scrollSize = 1000;
-			let scrollDiv = (document.getElementsByClassName('css-lsu8bg'))[0];
-			try {
-			let scrollHeight = scrollDiv.scrollHeight;
 
-			let timer = setInterval( () => {
-				window.scrollBy(0,scrollSize);
-				scrollSize = scrollSize + 1000;
+			try {
+				let scrollDiv = (document.getElementsByClassName('css-lsu8bg'))[0];
+				let scrollHeight = scrollDiv.scrollHeight;
+
+				let timer = setInterval( () => {
+					window.scrollBy(0,scrollSize);
+					scrollSize = scrollSize + 1000;
 				
-				if(scrollSize >= scrollHeight) {
-					clearInterval(timer);
-					resolve();
-				}
-			}, 250);
+					if(scrollSize >= scrollHeight) {
+						clearInterval(timer);
+						resolve();
+					}
+				}, 250);
 			}
+
 			catch(err) {
-				console.log("nope");
-				//resolve();
+				console.log("eerror");
+				resolve();
 			}
+
 		});
 	});
 }
