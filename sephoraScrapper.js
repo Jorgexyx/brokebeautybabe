@@ -18,7 +18,7 @@ async function pageScroll(page){
 					clearInterval(timer);
 					resolve();
 				}
-			}, 300);
+			}, 250);
 			}
 			catch(err) {
 				console.log("nope");
