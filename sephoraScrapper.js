@@ -92,7 +92,7 @@ let scrapSephoraItems = async() => {
 				}
 			}
 			return itemArr;
-		}, pageType));	
+		}, productType));	
 	}
 
 	browser.close()
