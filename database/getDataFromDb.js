@@ -2,7 +2,7 @@ const connectToDb = require('./connectToDb.js');
 const firestore = connectToDb.firestore;
 
 let getItemsFromDb = async() => {
-	var collections = ['Makeup', 'Skincare', 'bathAndBody', 'fragrence', 'hair', 'men', 'miniSize', 'toolsAndBrushes'];
+	var collections = ['Makeup', 'Skincare', 'bathAndBody', 'fragrence', 'hair', 'men', 'miniSize', 'toolsAndBrushes', 'misc'];
 	var items = [];
 	for (collectionName of collections) {
 		var collection = firestore.collection(collectionName);
