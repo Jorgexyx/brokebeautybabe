@@ -82,6 +82,15 @@
 	margin-bottom: 3%;
 }
 
+.product-box-mobile{
+	width: 150px;
+	border: 1px solid #D8D8D8;
+	display: flex;
+	flex-direction: column;
+	margin-right: 2%;
+	margin-bottom: 3%;
+}
+
 .product-box-image{
 	margin-top :5%;
 	margin-bottom: 5%;
@@ -131,6 +140,13 @@
 	justify-content: space-around;
 	flex-direction: row;
 	font-size: 10px;
+}
+
+.items-mobile{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	flex-wrap: wrap;
 }
 
 @keyframes App-logo-spin {

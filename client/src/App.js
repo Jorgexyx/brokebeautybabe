@@ -5,33 +5,22 @@ import loadingImage from './images/loading.gif';
 import { MdPerson, MdMenu} from "react-icons/md";
 import { FaShoppingBag } from "react-icons/fa";
 //import { IoIosHeart } from "react-icons/io";
-import { BrowserView, MobileView } from "react-device-detect";
+import { BrowserView, MobileView,isMobile } from "react-device-detect";
 
 
-function generateItemBoxNoPrice(props) {
-	var collectionName = props['collectionName'];
-	var productName = props['productName'];
-	var imgSrc = props['imageSrc'];
-	var oldPrice = props['oldPrice'];
-	return (
-		<div className="product-box">
-					<div className="product-box-image">
-							<img src={imgSrc} alt={productName} width="100" height="100"/> 
-					</div>
-
-					<div className="product-info">
-						<br/>		
-								<b>{collectionName}</b> 
-						<br/>
-								{productName}
-						<br/>
-
-						<div className="prices-div">
-								{oldPrice} 
-						</div>
-
-					</div>
+function generatePrices(oldPrice,newPrice) {
+	if(newPrice !== "") {
+		return (
+			<div className="prices-div">
+				<strike>{oldPrice}</strike> {" "} <b style={{color:"#DC143C"}}>{newPrice}</b>
 			</div>
+		);
+	}
+
+	return (
+		<div className="prices-div">
+			{oldPrice} 
+		</div>
 	);
 }
 
@@ -41,27 +30,43 @@ function generateItemBox(props) {
 	var imgSrc = props['imageSrc'];
 	var oldPrice = props['oldPrice'];
 	var newPrice = props['newPrice'];
-	return (
-			<div className="product-box">
-
-					<div className="product-box-image">
-							<img src={imgSrc} alt={productName} width="100" height="100"/> 
-					</div>
+	var pricesText = generatePrices(oldPrice, newPrice);
+	if (isMobile) {
+		return (
+			<div className="product-box-mobile">
+				<div className="product-box-image">
+					<img src={imgSrc} alt={productName} width="100" height="100"/> 
+				</div>
 	
-					<div className="product-info">
-						<br/>		
-								<b>{collectionName} </b>
-						<br/>
-								{productName}
-						<br/>
-
-						<div className="prices-div">
-								<strike>{oldPrice}</strike> {" "}<b style={{color:"#DC143C"}}>{newPrice}</b>
-						</div>
-
-					</div>
-
+				<div className="product-info">
+					<br/>		
+					<b>{collectionName} </b>
+					<br/>
+					{productName}
+					<br/>
+					{pricesText}
+				</div>
 			</div>
+
+		);
+	}
+	
+	return (
+		<div className="product-box">
+			<div className="product-box-image">
+				<img src={imgSrc} alt={productName} width="100" height="100"/> 
+			</div>
+	
+			<div className="product-info">
+				<br/>		
+				<b>{collectionName} </b>
+				<br/>
+				{productName}
+				<br/>
+				{pricesText}
+			</div>
+		</div>
+	
 	);
 }
 
@@ -136,18 +141,14 @@ class App extends Component {
 		for(let i = 0; i < len; i++) {
 			if (data[i]['collectionName'] === product) {
 				size = size + 1;
+				/*
 				var collectionName = data[i]['collectionName'];
 				var productName = data[i]['productName'];
 				var imgSrc = data[i]['imageSrc'];
 				var oldPrice = data[i]['oldPrice'];
 				var newPrice = data[i]['newPrice'];
-
-				if(newPrice !== "") {
-					table.push(generateItemBox(data[i]));
-				}
-				else {
-					table.push(generateItemBoxNoPrice(data[i]));
-				}
+				*/
+				table.push(generateItemBox(data[i]));
 
 			}
 		}
@@ -171,10 +172,12 @@ class App extends Component {
 		
 		for(let  i = 0; i < body.express.length; i++) {
 			var collectionName = body.express[i]['collectionName'];
+			/*
 			var productName = body.express[i]['productName'];
 			var imgSrc = body.express[i]['imageSrc'];
 			var oldPrice = body.express[i]['oldPrice'];
 			var newPrice = body.express[i]['newPrice'];
+			*/
 			var props = body.express[i]; 
 			//append product name if it doesnt exist in the dict
 			if(!exist[collectionName]) {
@@ -185,13 +188,7 @@ class App extends Component {
 						</button>
 				);
 			}
-			if(newPrice !== "") {
-				table.push(generateItemBox(props));
-			}
-
-			else {
-			table.push(generateItemBoxNoPrice(props));
-			}
+			table.push(generateItemBox(props));
 		}
 	
 		//append all parts
@@ -363,7 +360,7 @@ class App extends Component {
 							<b style={{'fontSize':'9px'}}> <font color="#880000">{this.state.numProducts}</font> PRODUCTS FOUND </b>
 						</div>
 
-						<div style={{'display':'flex', 'flexDirection':'column', 'alignItems':'center'}}>
+						<div className="items-mobile">
 							{this.state.products}
 						</div>
 
