@@ -398,11 +398,7 @@ class App extends Component {
 					<div>
 
 						<div className="filters-mobile-div">
-							<div style={{"paddingRight": ".7em"}}>
-								Filter By
-							</div>
-
-							<div>
+							<div style={{"position":"relative", "top":".5em"}}>
 								Brands: 
 							</div>
 							<Select
