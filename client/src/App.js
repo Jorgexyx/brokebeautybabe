@@ -13,14 +13,14 @@ function generatePrices(oldPrice,newPrice) {
 	if(newPrice !== "") {
 		return (
 			<div className="prices-div">
-				<strike>{oldPrice}</strike> {" "} <b style={{color:"#DC143C"}}>{newPrice}</b>
+				<strike>{oldPrice}</strike> {" "} <b className="prices-text">{newPrice}</b>
 			</div>
 		);
 	}
 
 	return (
 		<div className="prices-div">
-			{oldPrice} 
+			<b className="prices-text">{oldPrice} </b>
 		</div>
 	);
 }

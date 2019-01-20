@@ -168,7 +168,11 @@
 	display: flex;
 	justify-content: space-around;
 	flex-direction: row;
-	font-size: 10px;
+	font-size: 1.0em;
+}
+
+.prices-text{
+	color: #DC143C;
 }
 
 .items-mobile{
