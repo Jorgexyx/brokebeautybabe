@@ -300,6 +300,7 @@ class App extends Component {
 
 	/* navbar */
 	renderNavBar() {
+		if ( !isMobile) {
 		return (
 				<div className="nav-bar nav-links">
 					<a href="#All Products" className="nav-links" onClick={() =>this.onClick('all')}>
@@ -338,6 +339,7 @@ class App extends Component {
 						
 				</div>
 		)
+	}
 
 	}
 
@@ -361,9 +363,6 @@ class App extends Component {
       <div className="App">
 				{this.renderHeader()}
 				{this.renderNavBar()}
-
-				{/*<img src={image} alt="banner One" className="banner"/> */}
-
 				<BrowserView>
 				{/* PRODUCT DIVS */}
 				<div className="items-div">
