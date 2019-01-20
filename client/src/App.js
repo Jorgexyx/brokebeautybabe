@@ -4,6 +4,7 @@ import modelImage from './images/model.png';
 import loadingImage from './images/loading.gif';
 import { MdPerson, MdMenu} from "react-icons/md";
 import { FaShoppingBag } from "react-icons/fa";
+import Select from "react-select";
 //import { IoIosHeart } from "react-icons/io";
 import { BrowserView, MobileView,isMobile } from "react-device-detect";
 
@@ -22,6 +23,13 @@ function generatePrices(oldPrice,newPrice) {
 			{oldPrice} 
 		</div>
 	);
+}
+
+const customStyles = {
+		control: () => ({ 
+			display: 'flex',
+			width: 170,
+		})
 }
 
 function generateItemBox(props) {
@@ -75,6 +83,7 @@ class App extends Component {
 		data: null,
 		products: null,
 		brands: null,
+		brandsForSelect: [],
 		allProducts: null,
 		numProducts: null,
 		numOfAllProducts: null,
@@ -89,6 +98,11 @@ class App extends Component {
 		minisize: null,
 		isLoading: true
 	};
+
+	test = {
+		currentPage: null,
+	}
+
 	
 	componentDidMount() {
 		//call fetch once component mounts
@@ -102,10 +116,12 @@ class App extends Component {
 			allProducts: res[1],
 			numProducts: res[3],
 			numOfAllProducts: res[3],
+			brandsForSelect: res[4],
 			isLoading: false
 		}))
 		.catch(err => console.log(err));
 	}
+
 
 	onClick(brand) {
 		let val = [];
@@ -125,6 +141,10 @@ class App extends Component {
 					currentPage: "ALL PRODUCTS"
 				});
 		}
+	}
+
+	onSelectClick = (currentPage) => {
+		this.onClick(currentPage['value']);
 	}
 
 	generateBrandPage(product) {
@@ -169,7 +189,8 @@ class App extends Component {
 		let table = [];
 		let exist = {};
 		let productBrands = [];
-		
+		let brandsForSelect = [];	
+
 		for(let  i = 0; i < body.express.length; i++) {
 			var collectionName = body.express[i]['collectionName'];
 			/*
@@ -179,14 +200,18 @@ class App extends Component {
 			var newPrice = body.express[i]['newPrice'];
 			*/
 			var props = body.express[i]; 
+
 			//append product name if it doesnt exist in the dict
 			if(!exist[collectionName]) {
+
 				exist[collectionName] = true;
+
 				productBrands.push(
 						<button className="button-style" onClick={() => this.onClick(body.express[i]['collectionName'])}  href={collectionName}>
 						{collectionName}
 						</button>
 				);
+				brandsForSelect.push({value: collectionName, label: collectionName});
 			}
 			table.push(generateItemBox(props));
 		}
@@ -197,6 +222,8 @@ class App extends Component {
 		all.push(table);
 		all.push(productBrands);
 		all.push(body.express.length);
+		all.push(brandsForSelect);
+		console.log(brandsForSelect);
 		return all;
 	};
 
@@ -315,7 +342,7 @@ class App extends Component {
 	}
 
   render() {
-
+		const { currentPage } = this.test;
 		if (this.state.isLoading) {
 			return(
       <div className="App">
@@ -369,6 +396,22 @@ class App extends Component {
 
 				<MobileView>
 					<div>
+
+						<div className="filters-mobile-div">
+							<div style={{"paddingRight": ".7em"}}>
+								Filter By
+							</div>
+
+							<div>
+								Brands: 
+							</div>
+							<Select
+								value = {currentPage}
+								options={this.state.brandsForSelect}
+								onChange={this.onSelectClick}
+								styles={customStyles}
+							/>
+						</div>
 
 						<div className="product-header">
 							<b style={{'fontSize':'.7em'}}> <font color="#880000">{this.state.numProducts}</font> PRODUCTS FOUND </b>

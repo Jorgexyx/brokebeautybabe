@@ -156,6 +156,14 @@
 	white-space: nowrap;
 }
 
+.filters-mobile-div{
+	display: flex;
+	flex-direction:row;
+	justify-content: flex-start;
+	padding-bottom: 1em;
+	padding-left: 1em;
+}
+
 .prices-div{
 	display: flex;
 	justify-content: space-around;
