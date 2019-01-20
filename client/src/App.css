@@ -98,11 +98,11 @@
 
 .product-box-mobile{
 	width: 150px;
-	border: 1px solid #D8D8D8;
 	display: flex;
 	flex-direction: column;
 	margin-right: 2%;
-	margin-bottom: 3%;
+	margin-top: 7%;
+	margin-bottom: 15%;
 }
 
 .product-box-image{
