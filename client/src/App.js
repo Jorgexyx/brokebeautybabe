@@ -371,9 +371,9 @@ class App extends Component {
 					<div>
 
 						<div className="product-header">
-							<b style={{'fontSize':'9px'}}> <font color="#880000">{this.state.numProducts}</font> PRODUCTS FOUND </b>
+							<b style={{'fontSize':'.7em'}}> <font color="#880000">{this.state.numProducts}</font> PRODUCTS FOUND </b>
 						</div>
-
+				
 						<div className="items-mobile">
 							{this.state.products}
 						</div>
