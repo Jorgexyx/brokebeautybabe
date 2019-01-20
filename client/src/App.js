@@ -201,6 +201,35 @@ class App extends Component {
 	};
 
 	renderHeader() {
+		if (isMobile) {
+			return (
+				<header className="App-mobile-header">
+          <div style={{"display":"flex", "justifyContent":"space-between", "paddingLeft":"1em", "paddingRight":"1em", "paddingTop":".7em"}}>
+	
+						<div>
+							<div style={{"display":"flex", "flexDirection":"column", "alignItems":"center"}}>
+								<MdMenu size="1.7em"/>
+								Menu
+							</div>
+						</div>
+
+						<div className="Header-brand-text">
+ 							<b style={{"fontSize":"1.5em"}}>BEAUTY BABES</b>						
+							<font size="1" color="#202020">Makeup Lovers on a Budget</font>
+						</div>
+
+						<div style={{"display":"flex","justifyContent":"space-between","width":"12%"}}>
+							<FaShoppingBag size="1.7em"/>
+							<br/> 
+							<MdPerson size="1.7em"/>
+							<br/> 
+						</div>
+
+					</div>
+				</header>
+ 			);
+		}
+	
 		return (
         <header className="App-header">
 				<div>
@@ -224,30 +253,15 @@ class App extends Component {
 
 				<div style={{"display":"flex","flexDirection":"row"}}>
 	
-					<BrowserView>
 						<div className="Header-text" >
 							<font size="2" color="#A0A0A0">Home / </font><font size="2" color="#585858">{this.state.currentPage.toLowerCase()}</font>
 							<br/>
 							<b><font size="6">{this.state.currentPage}</font></b>
 						</div>
-					</BrowserView>
 
-					<MobileView>
-						<div className="Header-text-mobile">
-							<font size="2" color="#A0A0A0">Home / </font><font size="2" color="#585858">{this.state.currentPage.toLowerCase()}</font>
-							<br/>
-							<b><font size="6">{this.state.currentPage}</font></b>
-						</div>
-					</MobileView>
-					
 					<div>
-						<BrowserView>
 							<img src={modelImage} alt="banner One" className="banner"/> 
-						</BrowserView>
 						
-						<MobileView>
-							<img src={modelImage} alt="banner One" className="banner-mobile"/> 
-						</MobileView>
 						
 					</div>
 
