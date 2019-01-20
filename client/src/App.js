@@ -38,7 +38,7 @@ function generateItemBox(props) {
 					<img src={imgSrc} alt={productName} width="100" height="100"/> 
 				</div>
 	
-				<div className="product-info">
+				<div className="product-info-mobile">
 					<br/>		
 					<b>{collectionName} </b>
 					<br/>

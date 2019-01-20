@@ -126,6 +126,12 @@
 	align-items: flex-start;
 }
 
+.product-info-mobile{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
 .items-div{
 	display: flex;
 	padding-left: 25px;
