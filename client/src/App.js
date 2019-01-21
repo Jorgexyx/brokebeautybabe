@@ -9,6 +9,13 @@ import Select from "react-select";
 import { BrowserView, MobileView,isMobile } from "react-device-detect";
 
 
+const customStyles = {
+		control: () => ({ 
+			display: 'flex',
+			width: 150,
+		})
+}
+
 function generatePrices(oldPrice,newPrice) {
 	if(newPrice !== "") {
 		return (
@@ -25,12 +32,6 @@ function generatePrices(oldPrice,newPrice) {
 	);
 }
 
-const customStyles = {
-		control: () => ({ 
-			display: 'flex',
-			width: 170,
-		})
-}
 
 function generateItemBox(props) {
 	var collectionName = props['collectionName'];
@@ -79,6 +80,13 @@ function generateItemBox(props) {
 }
 
 class App extends Component {
+	sortOptions = [
+		{label:"Price: Low To High" , value:"LowToHigh"},
+		{label:"Price: High To Low" , value:"HighToLow"},
+		{label:"Alphabetical: A-Z" , value:"A-Z"},
+		{label:"Alphabetical: Z-A" , value:"Z-A"},
+	];
+
 	state = {
 		data: null,
 		products: null,
@@ -236,7 +244,6 @@ class App extends Component {
 						<div>
 							<div style={{"display":"flex", "flexDirection":"column", "alignItems":"center"}}>
 								<MdMenu size="1.7em"/>
-								Menu
 							</div>
 						</div>
 
@@ -247,8 +254,6 @@ class App extends Component {
 
 						<div style={{"display":"flex","justifyContent":"space-between","width":"12%"}}>
 							<FaShoppingBag size="1.7em"/>
-							<br/> 
-							<MdPerson size="1.7em"/>
 							<br/> 
 						</div>
 
@@ -397,8 +402,9 @@ class App extends Component {
 					<div>
 
 						<div className="filters-mobile-div">
+
 							<div style={{"position":"relative", "top":".5em"}}>
-								Brands: 
+								Brand 
 							</div>
 							<Select
 								value = {currentPage}
@@ -406,6 +412,15 @@ class App extends Component {
 								onChange={this.onSelectClick}
 								styles={customStyles}
 							/>
+
+							<div style={{"position":"relative", "top":".5em"}}>
+								Sort 
+							</div>
+							<Select 
+								options= {this.sortOptions} 
+								styles={customStyles}
+							/>
+
 						</div>
 
 						<div className="product-header">
