@@ -365,27 +365,10 @@ class App extends Component {
 				</div>
 		)
 	}
-
 	}
 
-  render() {
-		const { currentPage } = this.test;
-		if (this.state.isLoading) {
-			return(
-      <div className="App">
-        {this.renderHeader()}
-				{this.renderNavBar()}
-			
-					<div style={{"display":"flex","flexDirection":"column", "alignItems":"center"}}>
-						<img style={{"height":"5em","width":"5em","paddingBottom":"1em"}} src={loadingImage} alt="loading webpage"/>
-						<font size="2"> loading content please wait...</font>
-					</div>
-			</div>
-			);
-		}
-
-    return (
-      <div className="App">
+	renderSandwhichBar() {
+		return (
 				<div id="side-nav" className="side-nav">
 						<div style={{"paddingBottom":"1em","whiteSpace":"nowrap"}}>BEAUTY BABES</div>
 					<div className="side-nav-contents">
@@ -407,6 +390,32 @@ class App extends Component {
 						</div>
 					</div>
 				</div>
+		);
+
+	}
+
+  render() {
+		const { currentPage } = this.test;
+		if (this.state.isLoading) {
+			return(
+      <div className="App">
+				{this.renderSandwhichBar()}
+        {this.renderHeader()}
+				{this.renderNavBar()}
+			
+					<div style={{"display":"flex","flexDirection":"column", "alignItems":"center"}}>
+						<img style={{"height":"5em","width":"5em","paddingBottom":"1em"}} src={loadingImage} alt="loading webpage"/>
+						<font size="2"> loading content please wait...</font>
+					</div>
+			</div>
+			);
+		}
+
+    return (
+      <div className="App">
+
+
+				{this.renderSandwhichBar()}
 				{this.renderHeader()}
 				<div onClick={this.closeNav}>
 				{this.renderNavBar()}
