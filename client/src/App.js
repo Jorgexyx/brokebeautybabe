@@ -411,6 +411,7 @@ class App extends Component {
 								options={this.state.brandsForSelect}
 								onChange={this.onSelectClick}
 								styles={customStyles}
+								isSearchable = {false}
 							/>
 
 							<div style={{"position":"relative", "top":".5em"}}>
@@ -419,6 +420,7 @@ class App extends Component {
 							<Select 
 								options= {this.sortOptions} 
 								styles={customStyles}
+								isSearchable = {false}
 							/>
 
 						</div>
