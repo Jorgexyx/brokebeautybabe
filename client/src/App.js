@@ -387,8 +387,8 @@ class App extends Component {
     return (
       <div className="App">
 				<div id="side-nav" className="side-nav">
+						<div style={{"paddingBottom":"1em","whiteSpace":"nowrap"}}>BEAUTY BABES</div>
 					<div className="side-nav-contents">
-						<p>BEAUTY BABES</p>
 
 						<div className="side-nav-content">
 							HOME
