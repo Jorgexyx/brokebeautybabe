@@ -22,6 +22,26 @@
   padding-top: 60px;	
 }
 
+.side-nav-contents{
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	margin-left: 1em;
+}
+
+.side-nav-content{
+	width: 90%;
+	display: flex;
+	justify-content: flex-start;
+	margin-top: 1em;
+	margin-bottom: 1em;
+	padding-top: .8em;
+	padding-bottom: .8em;
+	border-top: solid .01em #CDCDCD;
+	border-bottom: solid .01em #CDCDCD;
+	
+}
+
 .App-mobile-header{
 	padding-top: 1%;
   flex-direction: column;

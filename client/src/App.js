@@ -387,12 +387,25 @@ class App extends Component {
     return (
       <div className="App">
 				<div id="side-nav" className="side-nav">
-					<p>BEAUTY BABES</p>
-					<p>Home</p>
-					<p>Makeup</p>
-					<p>Skin Care</p>
-					<p>Men</p>
-					
+					<div className="side-nav-contents">
+						<p>BEAUTY BABES</p>
+
+						<div className="side-nav-content">
+							HOME
+						</div>
+						<div className="side-nav-content">
+							MAKEUP
+						</div>
+						<div className="side-nav-content">
+							SKIN CARE
+						</div>
+						<div className="side-nav-content">
+							MEN
+						</div>
+						<div className="side-nav-content">
+							TOOLS
+						</div>
+					</div>
 				</div>
 				{this.renderHeader()}
 				<div onClick={this.closeNav}>
