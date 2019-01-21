@@ -186,6 +186,24 @@ class App extends Component {
 		return table;
 	}
 
+	openNav() {
+		try {
+				document.getElementById("side-nav").style.width = "65%";
+		}
+		catch(err) {
+			console.log("no");
+		}
+	}
+
+	closeNav() {
+		try {
+				document.getElementById("side-nav").style.width = "0%";
+		}
+		catch(err) {
+			console.log("no");
+		}
+	}
+
 	callBackendAPI = async() => {
 		const response = await fetch('/express_backend');
 		const body = await response.json();
@@ -239,11 +257,13 @@ class App extends Component {
 		if (isMobile) {
 			return (
 				<header className="App-mobile-header">
+
+
           <div style={{"display":"flex", "justifyContent":"space-between", "paddingLeft":"1em", "paddingRight":"1em", "paddingTop":".7em"}}>
 	
 						<div>
 							<div style={{"display":"flex", "flexDirection":"column", "alignItems":"center"}}>
-								<MdMenu size="1.7em"/>
+								<MdMenu size="1.7em" onClick={this.openNav}/>
 							</div>
 						</div>
 
@@ -366,7 +386,16 @@ class App extends Component {
 
     return (
       <div className="App">
+				<div id="side-nav" className="side-nav">
+					<p>BEAUTY BABES</p>
+					<p>Home</p>
+					<p>Makeup</p>
+					<p>Skin Care</p>
+					<p>Men</p>
+					
+				</div>
 				{this.renderHeader()}
+				<div onClick={this.closeNav}>
 				{this.renderNavBar()}
 				<BrowserView>
 				{/* PRODUCT DIVS */}
@@ -435,7 +464,7 @@ class App extends Component {
 
 					</div>
 				</MobileView>
-
+			</div>
      </div>
     );
   }

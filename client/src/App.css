@@ -8,6 +8,20 @@
   height: 40vmin;
 }
 
+.side-nav {
+	height: 100%;
+	width: 0%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+	color: #ffffff;
+  background-color: #111111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;	
+}
+
 .App-mobile-header{
 	padding-top: 1%;
   flex-direction: column;
