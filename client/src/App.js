@@ -417,7 +417,10 @@ class App extends Component {
 
 				{this.renderSandwhichBar()}
 				{this.renderHeader()}
+
 				<div onClick={this.closeNav}>
+
+
 				{this.renderNavBar()}
 				<BrowserView>
 				{/* PRODUCT DIVS */}
@@ -450,6 +453,9 @@ class App extends Component {
 				</BrowserView>
 
 				<MobileView>
+					<div style={{"paddingTop":".5em", "paddingBottom":".5em"}}>
+					<b> <font size="5.8">{this.state.currentPage}</font></b>
+					</div>
 					<div>
 
 						<div className="filters-mobile-div">
