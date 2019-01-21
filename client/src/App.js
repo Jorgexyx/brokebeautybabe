@@ -453,8 +453,9 @@ class App extends Component {
 				</BrowserView>
 
 				<MobileView>
+
 					<div style={{"paddingTop":".5em", "paddingBottom":".5em"}}>
-					<b> <font size="5.8">{this.state.currentPage}</font></b>
+						<b> <font size="5.8">{this.state.currentPage}</font></b>
 					</div>
 					<div>
 
@@ -482,8 +483,8 @@ class App extends Component {
 
 						</div>
 
-						<div className="product-header">
-							<b style={{'fontSize':'.7em'}}> <font color="#880000">{this.state.numProducts}</font> PRODUCTS FOUND </b>
+						<div className="product-header-mobile">
+							<b style={{'fontSize':'.8em'}}> <font color="#960f0f" style={{'paddingRight':'.3em'}}> {this.state.numProducts}</font> Products Found </b>
 						</div>
 				
 						<div className="items-mobile">
